@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
-const Listing = require("./models/listings.js")
+const Listing = require("./models/listing.js")
+const path = require("path ")
 
 
 // db name = stayEaseDb
@@ -21,19 +22,20 @@ app.get("/",(req,res) => {
   res.send("root working")
 })
 
-app.get("/testListing",async (req,res) => {
-  let sampleListing = new Listing({
-    title : "My new villa",
-    description : "by the beach",
-    price : 1200,
-    location : "araku, vizag",
-    country : "India"
-  })
-  await sampleListing.save()
-  console.log('sample was saved');
-  res.send("successful testing")
-  
-})
+
+
+// app.get("/testListing",async (req,res) => {
+//   let sampleListing = new Listing({
+//     title : "My new villa",
+//     description : "by the beach",
+//     price : 1200,
+//     location : "araku, vizag",
+//     country : "India"
+//   })
+//   await sampleListing.save()
+//   console.log('sample was saved');
+//   res.send("successful testing")
+// })
 
 app.listen(8080,() => {
     console.log('listening 8080');
