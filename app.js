@@ -20,6 +20,7 @@ async function main() {
 
 app.set("view engine",'ejs')
 app.set("views",path.join(__dirname,"views"))
+app.use(express.urlencoded({extended:true}))
 
 app.get("/",(req,res) => {
   res.send("root working")
@@ -30,6 +31,27 @@ app.get("/listings", async (req,res) => {
     const allListings = await Listing.find({})
     res.render("listings/index.ejs",{allListings})
 })
+
+//new route
+app.get("/listings/new",(req,res) => {
+    res.render("listings/new")
+})
+
+//show route
+app.get("/listings/:id", async (req,res) => {
+   let {id} = req.params;
+   const listing = await Listing.findById(id)
+   res.render("listings/show",{listing})
+})
+
+//Create route
+app.post("/listings",async(req,res)=>{
+    const newListing = new Listing(req.body.listing)
+    await newListing.save()
+    res.redirect("/listings")
+})
+
+
 
 // app.get("/testListing",async (req,res) => {
 //   let sampleListing = new Listing({
