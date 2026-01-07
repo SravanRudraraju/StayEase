@@ -84,4 +84,13 @@ body{
     font-weight: bold !important;
     border: none !important;
     background-color: #fe424d !important;
+    margin-bottom: 3rem;
+}
+
+/* edit page */
+.edit-btn{
+    font-weight: bold !important;
+    border: none !important;
+    background-color: #fe424d !important;
+    margin-bottom: 3rem;
 }
